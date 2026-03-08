@@ -6,12 +6,12 @@ k = 250
 p = RR(0.001)
 x_pts = [alpha^i for i in range(n)]
 
-def lagrange_basis(i,x_pts):
-    return prod((X - x_pts[h]) / (x_pts[i] - x_pts[h]) for h in range(k) if h != i)
+def lagrange_basis(i,x_pts, rrange):
+    return prod((X - x_pts[h]) / (x_pts[i] - x_pts[h]) for h in range(rrange) if h != i)
 
 def buildG(k):
     def Aij(i,j,k,x_pts):
-        Li = lagrange_basis(i,x_pts)
+        Li = lagrange_basis(i,x_pts,k)
         return Li(x_pts[k + j - 1])
     A = matrix(F, k, n - k, lambda i,j : Aij(i,j,k,x_pts))
     return block_matrix([[identity_matrix(F, k), A]])
@@ -20,7 +20,7 @@ def G(x_pts):
     return prod(X - x_pts[i] for i in range(n))
 
 def R(x_pts, r):
-    return sum(r[i] * lagrange_basis(i, x_pts) for i in range(n))
+    return sum(r[i] * lagrange_basis(i, x_pts, n) for i in range(n))
 
 def buildP(r, x_pts):
     return matrix(Ring, [[G(x_pts), Ring(0)], [-R(x_pts, r), Ring(1)]])
