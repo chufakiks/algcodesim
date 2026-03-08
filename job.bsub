@@ -29,7 +29,7 @@
 
 # here follow the commands you want to execute with input.in as the input file
 export MAMBA_ROOT_PREFIX=~/micromamba
-eval "$(./bin/micromamba shell hook -s bash)"
+eval "$(~/bin/micromamba shell hook -s bash)"
 micromamba activate sage
-cd algcodesim
+cd ~/algcodesim
 sage simhpc.sage
