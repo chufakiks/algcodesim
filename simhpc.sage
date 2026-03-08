@@ -1,6 +1,9 @@
 RR = RealField(1000)
 F.<alpha> = GF(2^8)
 Ring.<X> = PolynomialRing(F)
+n = 255
+k = 250
+p = RR(0.001)
 x_pts = [alpha^i for i in range(n)]
 
 def lagrange_basis(i,x_pts):
