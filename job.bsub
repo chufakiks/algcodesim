@@ -31,4 +31,5 @@
 export MAMBA_ROOT_PREFIX=~/micromamba
 eval "$(./bin/micromamba shell hook -s bash)"
 micromamba activate sage
+cd algcodesim
 sage simhpc.sage
