@@ -12,7 +12,7 @@ def lagrange_basis(i,x_pts, rrange):
 def buildG(k):
     def Aij(i,j,k,x_pts):
         Li = lagrange_basis(i,x_pts,k)
-        return Li(x_pts[k + j - 1])
+        return Li(x_pts[k + j])
     A = matrix(F, k, n - k, lambda i,j : Aij(i,j,k,x_pts))
     return block_matrix([[identity_matrix(F, k), A]])
 
