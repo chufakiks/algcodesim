@@ -3,7 +3,8 @@ F.<alpha> = GF(2^8)
 Ring.<X> = PolynomialRing(F)
 n = 255
 k = 245
-p = RR(0.001)
+pex = 1 - (1 - 0.001)^8
+p= RR(pex)
 x_pts = [alpha^i for i in range(n)]
 
 def lagrange_basis(i,x_pts, rrange):
