@@ -25,8 +25,8 @@ def R(x_pts, r):
 def buildP(r, x_pts):
     return matrix(Ring, [[G(x_pts), Ring(0)], [-R(x_pts, r), Ring(1)]])
 
-def isitkreduced(P,k):
-    return P[0,0].degree() >= P[0,1].degree() + k and P[1,0].degree() < P[1,1].degree() + k
+def isitkreduced(P, k):
+    return kminus1degree(P[0,0],P[0,1],k) < kminus1degree(P[1,0],P[1,1],k)
 
 def kreduce(P):
     if isitkreduced(P,k):
@@ -42,7 +42,7 @@ def fastinterpolation(r, x_pts):
     P = buildP(r, x_pts)
     P = kreduce(P)
     if kminus1degree(P[0,0],P[0,1],k) <= kminus1degree(P[1,0],P[1,1],k):
-        f = -P[0,0]//P[0,1]
+        f = -P[0,0]/P[0,1]
     else:
         f = -P[1,0]/P[1,1]
     return vector([f(x_pts[i]) for i in range(k)])
