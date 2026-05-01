@@ -3,6 +3,7 @@ F.<alpha> = GF(2^8)
 Ring.<X> = PolynomialRing(F)
 n = 255
 k = 245
+q = 2^8
 pex = 1 - (1 - 0.001)^8
 p= RR(pex)
 t = (n - k) // 2
